@@ -1,10 +1,11 @@
 I2C_MODE = LINUX
 I2C_LIBS = 
+#I2C_LIBS = -lbcm2835
 SRC_DIR = examples/src/
 BUILD_DIR = examples/
 LIB_DIR = $(SRC_DIR)lib/
 
-examples = test rawrgb step fbuf interp video hotspot sdlscale 
+examples = test test2 rawrgb step fbuf interp video hotspot sdlscale 
 examples_objects = $(addsuffix .o,$(addprefix $(SRC_DIR), $(examples)))
 examples_output = $(addprefix $(BUILD_DIR), $(examples))
 
@@ -15,10 +16,6 @@ endif
 
 ifeq ($(I2C_MODE), LINUX)
 	I2C_LIBS =
-endif
-
-ifeq ($(I2C_MODE), RPI)
-	I2C_LIBS = -lbcm2835
 endif
 
 all: libMLX90640_API.a libMLX90640_API.so examples
@@ -49,6 +46,9 @@ $(BUILD_DIR)hotspot: $(SRC_DIR)hotspot.o $(LIB_DIR)fb.o libMLX90640_API.a
 	$(CXX) -L/home/pi/mlx90640-library $^ -o $@ $(I2C_LIBS)
 
 $(BUILD_DIR)test: $(SRC_DIR)test.o libMLX90640_API.a
+	$(CXX) -L/home/pi/mlx90640-library $^ -o $@ $(I2C_LIBS)
+
+$(BUILD_DIR)test2: $(SRC_DIR)test2.o libMLX90640_API.a
 	$(CXX) -L/home/pi/mlx90640-library $^ -o $@ $(I2C_LIBS)
 
 $(BUILD_DIR)rawrgb: $(SRC_DIR)rawrgb.o libMLX90640_API.a

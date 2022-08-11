@@ -1,3 +1,7 @@
+# MN fork of pimoroni mlx90640-library
+
+Added examples/test2 (.cpp and executable) which provides a better terminal display using extended ansi palette and condensed pixel grid whilst still showing 2-digit temperature.
+
 # mlx90640-library
 
 This Python wrapper of the Melexis MLX90640 library was written for use with the Raspberry Pi and our [MLX90640 breakout](https://shop.pimoroni.com/products/mlx90640-thermal-camera-breakout). While you are free to use this software with whatever combination of device you choose, we unfortunately lack the resources to test and support any other combinations.
